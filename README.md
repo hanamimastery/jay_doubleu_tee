@@ -24,6 +24,22 @@ Or install it yourself as:
 
 ## Usage
 
+`jay_double_uti` uses RS256 algorithm by default, so youl'll need a private/public key pair and the access token for testing it out.
+
+In your console run
+
+```ruby
+require 'jwt'
+payload = {
+  data: { user_id: "de804507-5d03-4493-a038-d62f499b8a96" }, scopes: ""
+}
+private_key = OpenSSL::PKey::RSA.generate 2048
+secret = private_key.public_key.to_s
+token = JWT.encode payload, private_key, 'RS256'
+```
+
+Then save the `ENV` variable `JAY_DOUBLEU_TEE_PUBLIC_KEY` by setting the as a value your secret.
+
 ### Plain ruby Rack application
 
 ```ruby
@@ -35,7 +51,7 @@ class App
   def call(env)
     status, body =
       if auth.success?
-        [200, ["Hello, World!\n#{auth.value!}"]]
+        [200, [{ message: "Hello, World!", auth: auth.value! }]]
       else
         [401, [{ error: auth.failure }.to_json]]
       end
@@ -53,6 +69,27 @@ end
 use JayDoubleuTee::Authentication
 
 run App.new
+```
+
+```shell
+curl --location --request GET 'http://localhost:9292' \
+--header 'Authorization: Bearer <<YOUR_TOKEN>>'
+
+# => 200:
+  # {
+  #   message: 'Hello, World!,
+  #   auth: {
+  #     data: { user_id: "de804507-5d03-4493-a038-d62f499b8a96" },
+  #     scopes: ""
+  #   }
+  # }
+```
+
+```shell
+curl --location --request GET 'http://localhost:9292' \
+--header 'Authorization: Bearer invalid'
+
+# => 401: { error: Unauthorized. Token invalid }
 ```
 
 ### Hanami 2.0
@@ -75,7 +112,7 @@ use JayDoubleuTee::Authentication
 
 #### Supported algorithms
 
-JayDoubleuTee does not use any encryption algoritym by default. 'none' is set.
+JayDoubleuTee users RS256 encryption algoritym by default, but you can completely disable the token signature validation by setting up algorithm to 'none'. Check out the Configuration section.
 
 Below are listed all supported algoritms at the moment.
 
@@ -87,7 +124,7 @@ For more info about each of them refer to [jwt documentation](https://github.com
 
 ### Configuration
 
-To set encryption algorithm, you can configure
+To set encryption algorithm, you can configure several fields
 
 ```ruby
 JayDoubleuTee.configure do |config|
@@ -107,7 +144,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/hanamimastery/jay_doubleu_tee. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/hanamimastery/jay_doubleu_tee/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 

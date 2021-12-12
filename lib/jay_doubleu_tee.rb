@@ -13,10 +13,11 @@ module JayDoubleuTee
   ALGORITHMS = %w[none HS256 RS256 prime256v1 ES256 ED25519 PS256]
 
   extend Dry::Configurable
-  setting :algorithm, default: 'none' do |value|
+
+  setting :algorithm, default: 'RS256' do |value|
     raise ConfigurationError, "Unsupported algorithm." unless ALGORITHMS.include?(value)
     value
   end
 
-  setting :secret, default: nil
+  setting :secret, default: ENV['JAY_DOUBLEU_TEE_PUBLIC_KEY']
 end

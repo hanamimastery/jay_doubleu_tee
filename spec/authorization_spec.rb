@@ -26,8 +26,19 @@ end
 RSpec.describe JayDoubleuTee::Authorization do
   let(:rack_env) { Rack::Request.new({}).env }
   let(:with_authorization) { JayDoubleuTee::Authorization.new(App.new) }
+  let(:payload) { { data: 'test' } }
+  let(:algorithm) { 'RS256' }
+  let(:private_key) { OpenSSL::PKey::RSA.generate 2048 }
+  let(:secret) { private_key.public_key.to_s }
+  let(:token) { JWT.encode payload, private_key, algorithm }
 
   subject { with_authorization.call(rack_env) }
+
+  before do
+    JayDoubleuTee.configure do |config|
+      config.secret = secret
+    end
+  end
 
   context 'when unauthorized' do
     let(:status) { 401 }
@@ -44,9 +55,8 @@ RSpec.describe JayDoubleuTee::Authorization do
     let(:headers) { { 'Content-Type' => 'application/json' } }
     let(:body) { "Hello, World!\n#{{ data: 'test' }.to_json}" }
 
-
     before do
-      rack_env['HTTP_AUTHORIZATION'] = "Bearer eyJhbGciOiJub25lIn0.eyJkYXRhIjoidGVzdCJ9."
+      rack_env['HTTP_AUTHORIZATION'] = "Bearer #{token}"
     end
 
     it 'returns unauthorized' do

@@ -7,7 +7,7 @@ RSpec.describe JayDoubleuTee do
     let(:algorithms) { JayDoubleuTee::ALGORITHMS }
 
     it 'sets defaults' do
-      expect(described_class.config.algorithm).to eq('none')
+      expect(described_class.config.algorithm).to eq('RS256')
       expect(described_class.config.secret).to eq(nil)
     end
 
