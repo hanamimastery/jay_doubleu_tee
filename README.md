@@ -141,6 +141,15 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### Resources
+
+It's built on top of several gems to ensure the best user experience.
+
+- [JWT](https://github.com/jwt/ruby-jwt#algorithms-and-usage)
+- [dry-effects](https://dry-rb.org/gems/dry-effects). Here is the [video tutorial for dry-effects](https://hanamimastery.com/episodes/11-effective-ruby-programming-with-dry-effects)
+- [dry-monads](https://dry-rb.org/gems/dry-monads). Here is a [video tutorial for dry-monads](https://hanamimastery.com/episodes/7-untangle-your-app-with-dry-monads)
+- [dry-configurable](https://dry-rb.org/gems/dry-configurable). Here is the [video tutorial for dry-configurable](https://hanamimastery.com/episodes/5-configure-anything-with-dry-configurable)
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/hanamimastery/jay_doubleu_tee. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/hanamimastery/jay_doubleu_tee/blob/master/CODE_OF_CONDUCT.md).
