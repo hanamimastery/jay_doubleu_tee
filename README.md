@@ -24,28 +24,54 @@ Or install it yourself as:
 
 ## Usage
 
+### Plain ruby Rack application
+
+```ruby
 require "jay_double_uti"
 
 class App
   include JayDoubleUti::Auth
 
   def call(env)
-    if auth.success?
-      [
-        200,
-        { 'Content-Type' => 'application/json' },
-        ["Hello, World!\n#{auth.value!}"]
-      ]
-    else
-      [
-        401,
-        { 'Content-Type' => 'application/json' },
-        [{ error: auth.failure }.to_json]
-      ]
-    end
+    status, body =
+      if auth.success?
+        [200, ["Hello, World!\n#{auth.value!}"]]
+      else
+        [401, [{ error: auth.failure }.to_json]]
+      end
+
+    [status, headers, body]
+  end
+
+  private
+
+  def headers
+    { 'Content-Type' => 'application/json' }
   end
 end
 
+use JayDoubleUti::Authentication
+
+run App.new
+```
+
+### Hanami 2.0
+
+```ruby
+# config.ru
+
+require "jay_double_uti"
+use JayDoubleUti::Authentication
+```
+
+### Rails
+
+```ruby
+# config.ru
+
+require "jay_double_uti"
+use JayDoubleUti::Authentication
+```
 
 #### Supported algorithms
 
@@ -58,6 +84,19 @@ Below are listed all supported algoritms at the moment.
 ```
 
 For more info about each of them refer to [jwt documentation](https://github.com/jwt/ruby-jwt#algorithms-and-usage)
+
+### Configuration
+
+To set encryption algorithm, you can configure
+
+```ruby
+JayDoubleUti.configure do |config|
+  config.algorithm = 'RS256'
+  config.secret = ENV['PUBLIC_KEY']
+end
+```
+
+Again, for information how to generate private and public keys, [jwt documentation](https://github.com/jwt/ruby-jwt#algorithms-and-usage) or check out the [spec files](https://github.com/hanamimastery/jay_double_uti/tree/master/spec/jay_double_uti/decoder_spec.rb)
 
 ## Development
 
