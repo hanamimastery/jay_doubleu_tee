@@ -1,8 +1,10 @@
 # JayDoubleUti
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/jay_double_uti`. To experiment with that code, run `bin/console` for an interactive prompt.
+A JWT authorization middleware for any web application.
 
-TODO: Delete this and the text above, and describe your gem
+JayDoubleUti is inspired by [Hanami philosophy](https://hanamirb.org) to build components that are highly reusable, and compatible with any ruby application.
+
+JayDoubleUti is fully compatible with RACK, so it is with Hanami, Rails, Sinatra, Roda, and whatever else you can think about.
 
 ## Installation
 
@@ -22,7 +24,40 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+require "jay_double_uti"
+
+class App
+  include JayDoubleUti::Auth
+
+  def call(env)
+    if auth.success?
+      [
+        200,
+        { 'Content-Type' => 'application/json' },
+        ["Hello, World!\n#{auth.value!}"]
+      ]
+    else
+      [
+        401,
+        { 'Content-Type' => 'application/json' },
+        [{ error: auth.failure }.to_json]
+      ]
+    end
+  end
+end
+
+
+#### Supported algorithms
+
+JayDoubleUti does not use any encryption algoritym by default. 'none' is set.
+
+Below are listed all supported algoritms at the moment.
+
+```ruby
+%w[none HS256 RS256 prime256v1 ES256 ED25519 PS256]
+```
+
+For more info about each of them refer to [jwt documentation](https://github.com/jwt/ruby-jwt#algorithms-and-usage)
 
 ## Development
 
@@ -32,7 +67,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/jay_double_uti. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/jay_double_uti/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/hanamimastery/jay_double_uti. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/hanamimastery/jay_double_uti/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License

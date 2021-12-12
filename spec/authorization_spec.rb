@@ -6,12 +6,13 @@ class App
   include JayDoubleUti::Auth
 
   def call(env)
-    if auth.success?
-      body = ["Hello, World!\n#{auth.value!.to_json}"]
-      [ 200, headers, body]
-    else
-      [ 401, headers, [{ error: auth.failure }.to_json]]
-    end
+    status, body =
+      if auth.success?
+        [200, ["Hello, World!\n#{auth.value!.to_json}"]]
+      else
+        [401, [{ error: auth.failure }.to_json]]
+      end
+    [status, headers, body]
   end
 
   private
