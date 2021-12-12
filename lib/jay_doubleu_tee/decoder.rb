@@ -2,9 +2,9 @@
 
 require "jwt"
 require "dry/monads"
-require "jay_double_uti/prepare_signature"
+require "jay_doubleu_tee/prepare_signature"
 
-module JayDoubleUti
+module JayDoubleuTee
 
   class Decoder
     include Dry::Monads[:result]
@@ -23,7 +23,7 @@ module JayDoubleUti
     private
 
     def algorithm
-      JayDoubleUti.config.algorithm
+      JayDoubleuTee.config.algorithm
     end
 
     def verify?
@@ -33,7 +33,7 @@ module JayDoubleUti
     def signature
       PrepareSignature.new.call(
         algorithm: algorithm,
-        secret: JayDoubleUti.config.secret
+        secret: JayDoubleuTee.config.secret
       )
     end
 

@@ -3,7 +3,7 @@
 require 'rack'
 
 class App
-  include JayDoubleUti::Auth
+  include JayDoubleuTee::Auth
 
   def call(env)
     status, body =
@@ -23,9 +23,9 @@ class App
 end
 
 
-RSpec.describe JayDoubleUti::Authorization do
+RSpec.describe JayDoubleuTee::Authorization do
   let(:rack_env) { Rack::Request.new({}).env }
-  let(:with_authorization) { JayDoubleUti::Authorization.new(App.new) }
+  let(:with_authorization) { JayDoubleuTee::Authorization.new(App.new) }
 
   subject { with_authorization.call(rack_env) }
 

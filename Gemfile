@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in jay_double_uti.gemspec
+# Specify your gem's dependencies in jay_doubleu_tee.gemspec
 gemspec
 
 gem "rake", "~> 12.0"

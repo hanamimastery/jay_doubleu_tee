@@ -1,17 +1,17 @@
-# JayDoubleUti
+# JayDoubleuTee
 
 A JWT authorization middleware for any web application.
 
-JayDoubleUti is inspired by [Hanami philosophy](https://hanamirb.org) to build components that are highly reusable, and compatible with any ruby application.
+JayDoubleuTee is inspired by [Hanami philosophy](https://hanamirb.org) to build components that are highly reusable, and compatible with any ruby application.
 
-JayDoubleUti is fully compatible with RACK, so it is with Hanami, Rails, Sinatra, Roda, and whatever else you can think about.
+JayDoubleuTee is fully compatible with RACK, so it is with Hanami, Rails, Sinatra, Roda, and whatever else you can think about.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'jay_double_uti'
+gem 'jay_doubleu_tee'
 ```
 
 And then execute:
@@ -20,17 +20,17 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install jay_double_uti
+    $ gem install jay_doubleu_tee
 
 ## Usage
 
 ### Plain ruby Rack application
 
 ```ruby
-require "jay_double_uti"
+require "jay_doubleu_tee"
 
 class App
-  include JayDoubleUti::Auth
+  include JayDoubleuTee::Auth
 
   def call(env)
     status, body =
@@ -50,7 +50,7 @@ class App
   end
 end
 
-use JayDoubleUti::Authentication
+use JayDoubleuTee::Authentication
 
 run App.new
 ```
@@ -60,8 +60,8 @@ run App.new
 ```ruby
 # config.ru
 
-require "jay_double_uti"
-use JayDoubleUti::Authentication
+require "jay_doubleu_tee"
+use JayDoubleuTee::Authentication
 ```
 
 ### Rails
@@ -69,13 +69,13 @@ use JayDoubleUti::Authentication
 ```ruby
 # config.ru
 
-require "jay_double_uti"
-use JayDoubleUti::Authentication
+require "jay_doubleu_tee"
+use JayDoubleuTee::Authentication
 ```
 
 #### Supported algorithms
 
-JayDoubleUti does not use any encryption algoritym by default. 'none' is set.
+JayDoubleuTee does not use any encryption algoritym by default. 'none' is set.
 
 Below are listed all supported algoritms at the moment.
 
@@ -90,13 +90,13 @@ For more info about each of them refer to [jwt documentation](https://github.com
 To set encryption algorithm, you can configure
 
 ```ruby
-JayDoubleUti.configure do |config|
+JayDoubleuTee.configure do |config|
   config.algorithm = 'RS256'
   config.secret = ENV['PUBLIC_KEY']
 end
 ```
 
-Again, for information how to generate private and public keys, [jwt documentation](https://github.com/jwt/ruby-jwt#algorithms-and-usage) or check out the [spec files](https://github.com/hanamimastery/jay_double_uti/tree/master/spec/jay_double_uti/decoder_spec.rb)
+Again, for information how to generate private and public keys, [jwt documentation](https://github.com/jwt/ruby-jwt#algorithms-and-usage) or check out the [spec files](https://github.com/hanamimastery/jay_doubleu_tee/tree/master/spec/jay_doubleu_tee/decoder_spec.rb)
 
 ## Development
 
@@ -106,7 +106,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/hanamimastery/jay_double_uti. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/hanamimastery/jay_double_uti/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/hanamimastery/jay_doubleu_tee. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/hanamimastery/jay_doubleu_tee/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
@@ -115,4 +115,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the JayDoubleUti project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/jay_double_uti/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the JayDoubleuTee project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/jay_doubleu_tee/blob/master/CODE_OF_CONDUCT.md).

@@ -2,7 +2,7 @@
 
 require "jwt"
 
-module JayDoubleUti
+module JayDoubleuTee
   class PrepareSignature
     def call(algorithm:, secret:)
       return OpenSSL::PKey::RSA.new(secret) if algorithm == "RS256"

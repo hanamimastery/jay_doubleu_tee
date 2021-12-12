@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jay_double_uti (0.1.0)
+    jay_doubleu_tee (0.1.0)
       dry-configurable
       dry-effects
       dry-monads
@@ -55,7 +55,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  jay_double_uti!
+  jay_doubleu_tee!
   rack
   rake (~> 12.0)
   rbnacl

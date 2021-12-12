@@ -1,14 +1,14 @@
 require 'jwt'
-require 'jay_double_uti/decoder'
+require 'jay_doubleu_tee/decoder'
 require 'rbnacl'
 
-RSpec.describe JayDoubleUti::Decoder do
+RSpec.describe JayDoubleuTee::Decoder do
   let(:payload) { { data: 'test' } }
   subject { described_class.new }
 
   shared_examples_for "supported algorithm" do
     before do
-      JayDoubleUti.configure do |config|
+      JayDoubleuTee.configure do |config|
         config.algorithm = algorithm
         config.secret = secret
       end

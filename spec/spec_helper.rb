@@ -1,14 +1,14 @@
 require "bundler/setup"
-require "jay_double_uti"
+require "jay_doubleu_tee"
 
 # Enable test interface for dry-configurable
 require "dry/configurable/test_interface"
-module JayDoubleUti
+module JayDoubleuTee
   enable_test_interface
 end
 
 RSpec.configure do |config|
-  config.before(:each) { JayDoubleUti.reset_config }
+  config.before(:each) { JayDoubleuTee.reset_config }
 
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"

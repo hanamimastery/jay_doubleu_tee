@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "dry/effects"
-require "jay_double_uti/decoder"
+require "jay_doubleu_tee/decoder"
 
-module JayDoubleUti
+module JayDoubleuTee
   class Authorization
     include Dry::Effects::Handler.Reader(:auth)
 

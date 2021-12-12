@@ -1,10 +1,10 @@
-RSpec.describe JayDoubleUti do
+RSpec.describe JayDoubleuTee do
   it "has a version number" do
-    expect(JayDoubleUti::VERSION).not_to be nil
+    expect(JayDoubleuTee::VERSION).not_to be nil
   end
 
   describe ".configure" do
-    let(:algorithms) { JayDoubleUti::ALGORITHMS }
+    let(:algorithms) { JayDoubleuTee::ALGORITHMS }
 
     it 'sets defaults' do
       expect(described_class.config.algorithm).to eq('none')
@@ -27,7 +27,7 @@ RSpec.describe JayDoubleUti do
         described_class.configure do |config|
           config.algorithm = 'invalid'
         end
-      }.to raise_error(JayDoubleUti::ConfigurationError)
+      }.to raise_error(JayDoubleuTee::ConfigurationError)
     end
 
     it 'configures secret' do

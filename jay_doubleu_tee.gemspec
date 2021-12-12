@@ -1,22 +1,22 @@
-require_relative 'lib/jay_double_uti/version'
+require_relative 'lib/jay_doubleu_tee/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "jay_double_uti"
-  spec.version       = JayDoubleUti::VERSION
+  spec.name          = "jay_doubleu_tee"
+  spec.version       = JayDoubleuTee::VERSION
   spec.authors       = ["Sebastian Wilgosz"]
   spec.email         = ["sebastian@hanamimastery.com"]
 
   spec.summary       = %q{A JWT authorization solution for any ruby web app.}
-  spec.description   = %q{JayDoubleUti is a simple but powerful middleware for authorising endpoints in any ruby application. Uses dry-effects and jwt under the hood. }
-  spec.homepage      = "https://github.com/hanamimastery/jay_double_uti"
+  spec.description   = %q{JayDoubleuTee is a simple but powerful middleware for authorising endpoints in any ruby application. Uses dry-effects and jwt under the hood. }
+  spec.homepage      = "https://github.com/hanamimastery/jay_doubleu_tee"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/hanamimastery/jay_double_uti"
-  spec.metadata["changelog_uri"] = "https://github.com/hanamimastery/jay_double_uti/tree/master/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/hanamimastery/jay_doubleu_tee"
+  spec.metadata["changelog_uri"] = "https://github.com/hanamimastery/jay_doubleu_tee/tree/master/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

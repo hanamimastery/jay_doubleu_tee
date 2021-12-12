@@ -2,11 +2,11 @@
 
 require "dry-configurable"
 
-require "jay_double_uti/version"
-require "jay_double_uti/authorization"
-require "jay_double_uti/auth"
+require "jay_doubleu_tee/version"
+require "jay_doubleu_tee/authorization"
+require "jay_doubleu_tee/auth"
 
-module JayDoubleUti
+module JayDoubleuTee
   class Error < StandardError; end
   ConfigurationError = Class.new(Error)
 

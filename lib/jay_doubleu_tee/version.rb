@@ -1,3 +1,3 @@
-module JayDoubleUti
+module JayDoubleuTee
   VERSION = "0.1.0"
 end

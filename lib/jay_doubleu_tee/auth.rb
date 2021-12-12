@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module JayDoubleUti
+module JayDoubleuTee
   Auth = Dry::Effects.Reader(:auth)
 end
