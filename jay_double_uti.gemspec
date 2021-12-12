@@ -26,4 +26,9 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "jwt"
+  spec.add_dependency "dry-effects"
+  spec.add_dependency "dry-monads"
+  spec.add_dependency "dry-configurable"
 end

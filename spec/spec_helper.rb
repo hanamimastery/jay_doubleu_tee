@@ -1,7 +1,15 @@
 require "bundler/setup"
 require "jay_double_uti"
 
+# Enable test interface for dry-configurable
+require "dry/configurable/test_interface"
+module JayDoubleUti
+  enable_test_interface
+end
+
 RSpec.configure do |config|
+  config.before(:each) { JayDoubleUti.reset_config }
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
 
