@@ -12,6 +12,7 @@ module JayDoubleuTee
     InvalidTokenError = Class.new(StandardError)
 
     def call(given)
+      return Failure(InvalidTokenError.new("Unauthorized. Token missing")) if given.nil? || given.empty?
       # Set password to nil and validation to false otherwise this won't work
       token = extract_token(given)
       res = JWT.decode token, signature, verify?, { algorithm: algorithm }
