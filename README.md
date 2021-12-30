@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-`jay_double_uti` uses RS256 algorithm by default, so youl'll need a private/public key pair and the access token for testing it out.
+`jay_doubleu_tee` uses RS256 algorithm by default, so youl'll need a private/public key pair and the access token for testing it out.
 
 In your console run
 
