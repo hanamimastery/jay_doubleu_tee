@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jay_doubleu_tee (0.2.1)
+    jay_doubleu_tee (0.3.0)
       dry-configurable
       dry-effects
       dry-monads
