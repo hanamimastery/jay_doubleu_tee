@@ -31,7 +31,7 @@ RSpec.describe JayDoubleuTee::Decoder do
       result = subject.call(nil)
       expect(result).to be_failure
       expect(result.failure).to be_kind_of(described_class::InvalidTokenError)
-      expect(result.failure.message).to eq("Unauthorized. Token invalid")
+      expect(result.failure.message).to eq("Unauthorized. Token missing")
     end
   end
 

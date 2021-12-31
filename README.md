@@ -49,12 +49,7 @@ class App
   include JayDoubleuTee::Auth
 
   def call(env)
-    status, body =
-      if auth.success?
-        [200, [{ message: "Hello, World!", auth: auth.value! }]]
-      else
-        [401, [{ error: auth.failure }.to_json]]
-      end
+    status, body = [200, [{ message: "Hello, World!", auth: auth.value! }]]
 
     [status, headers, body]
   end
@@ -66,7 +61,12 @@ class App
   end
 end
 
-use JayDoubleuTee::Authentication
+JayDoubleuTee.configure do |config|
+  config.algorithm = 'RS256'
+  config.secret = ENV['JAY_DOUBLEU_TEE_PUBLIC_KEY']
+end
+
+use JayDoubleuTee::Authorization
 
 run App.new
 ```
@@ -98,7 +98,7 @@ curl --location --request GET 'http://localhost:9292' \
 # config.ru
 
 require "jay_doubleu_tee"
-use JayDoubleuTee::Authentication
+use JayDoubleuTee::Authorization
 ```
 
 ### Rails
@@ -107,7 +107,7 @@ use JayDoubleuTee::Authentication
 # config.ru
 
 require "jay_doubleu_tee"
-use JayDoubleuTee::Authentication
+use JayDoubleuTee::Authorization
 ```
 
 #### Supported algorithms
@@ -134,6 +134,28 @@ end
 ```
 
 Again, for information how to generate private and public keys, [jwt documentation](https://github.com/jwt/ruby-jwt#algorithms-and-usage) or check out the [spec files](https://github.com/hanamimastery/jay_doubleu_tee/tree/master/spec/jay_doubleu_tee/decoder_spec.rb)
+
+**Authorizing by default**
+
+JayDoubleuTee uses secure by default principle, adding authorization to all endpoints using the middleware. If you don't want to authorize all responses by default, you can override the corresponding setting.
+
+```ruby
+JayDoubleuTee.configure do |config|
+  config.authorize_by_default = false
+end
+```
+
+Then in your action you need to handle authorization failure on your own.
+
+```ruby
+  if auth.success?
+    [200, [{ message: "Hello, World!", auth: auth.value! }]]
+  else
+    [401, [{ error: auth.failure }.to_json]]
+  end
+```
+
+This may be useful if you have only one component in your application using the JWT flow, while the rest use different authorization mechanism.
 
 ## Development
 
