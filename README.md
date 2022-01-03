@@ -167,6 +167,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 It's built on top of several gems to ensure the best user experience.
 
+- [Hanami Mastery screencast](https://hanamimastery.com/episodes/12-authorization-with-jwt)
 - [JWT](https://github.com/jwt/ruby-jwt#algorithms-and-usage)
 - [dry-effects](https://dry-rb.org/gems/dry-effects). Here is the [video tutorial for dry-effects](https://hanamimastery.com/episodes/11-effective-ruby-programming-with-dry-effects)
 - [dry-monads](https://dry-rb.org/gems/dry-monads). Here is a [video tutorial for dry-monads](https://hanamimastery.com/episodes/7-untangle-your-app-with-dry-monads)
