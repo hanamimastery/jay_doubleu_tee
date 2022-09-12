@@ -14,11 +14,11 @@ module JayDoubleuTee
 
   extend Dry::Configurable
 
-  setting :algorithm, default: 'RS256' do |value|
+  setting :algorithm, default: 'RS256', constructor: ->(value) do
     raise ConfigurationError, "Unsupported algorithm." unless ALGORITHMS.include?(value)
     value
   end
-
+  
   setting :secret, default: ENV['JAY_DOUBLEU_TEE_PUBLIC_KEY']
 
   setting :authorize_by_default, default: true
