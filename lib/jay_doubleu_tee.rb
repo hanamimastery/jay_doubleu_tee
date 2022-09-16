@@ -18,7 +18,7 @@ module JayDoubleuTee
     raise ConfigurationError, "Unsupported algorithm." unless ALGORITHMS.include?(value)
     value
   end
-  
+
   setting :secret, default: ENV['JAY_DOUBLEU_TEE_PUBLIC_KEY']
 
   setting :authorize_by_default, default: true
