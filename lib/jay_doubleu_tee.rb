@@ -14,7 +14,7 @@ module JayDoubleuTee
 
   extend Dry::Configurable
 
-  setting :algorithm, default: 'RS256' do |value|
+  setting :algorithm, default: 'RS256', constructor: ->(value) do
     raise ConfigurationError, "Unsupported algorithm." unless ALGORITHMS.include?(value)
     value
   end
